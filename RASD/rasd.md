@@ -26,9 +26,9 @@ The main purposes of the new system are:
 
 ##### Actual system
 Until now the electric-car company has a system where the client have to call a call-center and communicating his position, the operator searches, using the information system, for the nearest available car and propose it to the client, if the client accepts the car the operator reserves it for him.  
-The cars are located in specific parking areas owned by the company, this areas are located in different areas of the city. In each parking area there are some electric power stations used for charging the cars and a small office for an operator who manage the parking and its cars (like: charge the car battery and set the car as available in the information system if it is ready for another ride).
-When the client reach the indicated station, the operator check the reservation and verify the client identity, insert in the information system the data of the car rent and give the key of the car to the client.  
-When client no needs more the car he have to bring it back in one of the specific parking areas, after this the office operator prepares the bill for the client and inserts all the data in the information system.
+The cars are located in specific parking areas owned by the company, these areas are located in different zone of the city. In each parking area there are some electric power stations used for charging the cars and a small office for an operator who manage the parking and its cars (like: charge the car battery and set the car as available in the information system if it is ready for another ride).  
+When the client reach the indicated station, the operator checks the reservation and verifies the client identity, inserts in the information system the data of the car rent and gives the key of the car to the client.  
+When client no needs more the car he has to bring it back in one of the specific parking areas, after this the office operator prepares the bill for the client and inserts all the data in the information system.
 The cars maintenance is assigned to an external company.
 
 
@@ -39,6 +39,6 @@ The cars maintenance is assigned to an external company.
 - [G4] The client shall be able to picks up and drives the reserved car.
 - [G5] The client shall be able to know where are the safe area for parking the car.
 - [G6] The client shall be able to know the current charges during the ride.
-- [G7] The client shall be able to leave the car and end the ride.
+- [G7] The client shall be able to end the ride when he leaves the car.
 - [G8] The system must incentivize the virtuous behaviors of the users.
 - [G9] The system has to offer public APIs to enable the possibility to develop additional services on top of the basic ones.
