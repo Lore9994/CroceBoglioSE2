@@ -22,3 +22,11 @@ The service will allows registered client to search and reserve a car using GPS 
 The main purposes of the new system are:
 - Be more efficient and reliable than the previous system.
 - Offer a better service to the clients.
+
+
+##### Actual system
+Until now the electric-car company has a system where the client have to call a call-center and communicating his position, the operator searches, using the information system, for the nearest available car and propose it to the client, if the client accepts the car the operator reserves it for him.  
+The cars are located in specific parking areas owned by the company, this areas are located in different areas of the city. In each parking area there are some electric power stations used for charging the cars and a small office for an operator who manage the parking and its cars (like: charge the car battery and set the car as available in the information system if it is ready for another ride).
+When the client reach the indicated station, the operator check the reservation and verify the client identity, insert in the information system the data of the car rent and give the key of the car to the client.  
+When client no needs more the car he have to bring it back in one of the specific parking areas, after this the office operator prepares the bill for the client and inserts all the data in the information system.
+The cars maintenance is assigned to an external company.
