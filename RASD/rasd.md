@@ -30,3 +30,13 @@ The cars are located in specific parking areas owned by the company, this areas 
 When the client reach the indicated station, the operator check the reservation and verify the client identity, insert in the information system the data of the car rent and give the key of the car to the client.  
 When client no needs more the car he have to bring it back in one of the specific parking areas, after this the office operator prepares the bill for the client and inserts all the data in the information system.
 The cars maintenance is assigned to an external company.
+
+
+##### Goals:
+- Allows client to register to the system
+- Allows user to login into the system
+- Allows user to search cars in a specific zone
+- Allows user to reserve a car from a list up to one hour
+- Allows user to pick up and drive his reserved car
+- User must be able to know in every moment the partial amount of the ride
+- System must incentivize the virtuous behaviors of the users
