@@ -16,12 +16,12 @@
 
 ##### Description of the given problem  
 We will project and implement PowerEnjoy, a digital management system for a car-sharing service in the city of Milan, that exclusively employs electric cars and allow clients to use them.  
-Clients will interact with the system by a dedicated web service.  
+Clients will interact with the system by a dedicated web service or mobile app.  
 The system will include all the basic functions of a car-sharing service plus some extra features.  
 The service will allows registered client to search and reserve a car using GPS position or a specific address.  
 The main purposes of the new system are:
-- Be more efficient and reliable than the previous system.
 - Offer a better service to the clients.
+- Be more efficient and reliable than the previous system.
 
 
 ##### Actual system
@@ -33,10 +33,12 @@ The cars maintenance is assigned to an external company.
 
 
 ##### Goals:
-- Allows client to register to the system
-- Allows user to login into the system
-- Allows user to search cars in a specific zone
-- Allows user to reserve a car from a list up to one hour
-- Allows user to pick up and drive his reserved car
-- User must be able to know in every moment the partial amount of the ride
-- System must incentivize the virtuous behaviors of the users
+- [G1] The client shall be able to access the service through web service.
+- [G2] The client shall be able to search cars in a specific zone.
+- [G3] The client shall be able to reserve a car from a list up to an hour.
+- [G4] The client shall be able to picks up and drives the reserved car.
+- [G5] The client shall be able to know where are the safe area for parking the car.
+- [G6] The client shall be able to know the current charges during the ride.
+- [G7] The client shall be able to leave the car and end the ride.
+- [G8] The system must incentivize the virtuous behaviors of the users.
+- [G9] The system has to offer public APIs to enable the possibility to develop additional services on top of the basic ones.
