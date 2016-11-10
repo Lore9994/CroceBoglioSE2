@@ -67,7 +67,7 @@ sig CarScreen {
 sig Reservation {
 	reservationId: one Int,
 	reservedCar: one Car,
-	expirationTime: one Date,
+	expired: one Bool,
 	user: one RegisteredUser
 }
 {
@@ -80,7 +80,7 @@ sig Area {
 sig NoSafeArea extends Area{}
 sig SafeArea extends Area {}
 sig SpecialArea extends SafeArea{
-	numberOfPowerGrid: set PowerGrid,
+	numberOfPowerGrid: some PowerGrid,
 	carInCharge: set Car 
 }
 
@@ -108,8 +108,24 @@ sig BonusInCharge extends Bonus{}
 sig BonusDistance extends Bonus{}
 sig BonusLowBattery extends Bonus{}
 
+fact registeredUserAreUnique{
+	all u1, u2: RegisteredUser | (u1 != u2) => (u1.userId != u2.userId)
+	all u1, u2: RegisteredUser | (u1 != u2) => (u1.email != u2.email)	
+}
 
+fact carAreUnique{
+	all c1, c2: Car | (c1 != c2) => (c1.carId != c2.carId)
+	all c1, c2: Car | (c1 != c2) => (c1.licensePlate != c2.licensePlate)
+	all c1, c2: Car | (c1 != c2) => (c1.screen != c2.screen)
+}
 
+fact reseravationAreUnique{
+	all r1, r2: Reservation | (r1 != r2) => (r1.reservationId != r2.reservationId)
+}
+
+fact userCanMadeOneReservationAtTime{
+	all r1, r2: Reservation | (r1 != r2 && r1.user = r2.user) => (r1.expired = False or r2.expired = False) 
+}
 
 
 
