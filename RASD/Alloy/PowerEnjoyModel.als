@@ -124,7 +124,9 @@ fact reseravationAreUnique{
 }
 
 fact userCanMadeOneReservationAtTime{
-	all r1, r2: Reservation | (r1 != r2 && r1.user = r2.user) => (r1.expired = False or r2.expired = False) 
+	all r1, r2: Reservation | (r1 != r2 && r1.user = r2.user) => (r1.expired = True or r2.expired = True)
+	all r1, r2: Reservation | (r1 != r2 && r1.Car = r2.Car) => (r1.expired = True or r2.expired = True)
+	all r: Reservation |((r.expired = False) => r.Car.stateAvailability = ReservedCar) && (r.expired = True) => r.Car.stateAvailability = AvailableCar)
 }
 
 
