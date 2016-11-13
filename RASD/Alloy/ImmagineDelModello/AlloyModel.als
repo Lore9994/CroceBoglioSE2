@@ -289,12 +289,12 @@ pred show() {
 	#Reservation = 2
 }
 
-//check rideCondition
-//check carCondition
-//check bonusInSpecialArea
-//check noPassengersNumberExceedSeats
-//check carReservedAreAlwaysInSafeArea
-//check carAvailableAreAlwaysInSafeArea
-//check noRideWithoutReservation
+check rideCondition
+check carCondition
+check bonusInChargeSpecialArea
+check noPassengersNumberExceedSeats
+check carReservedAreAlwaysInSafeArea
+check carAvailableAreAlwaysInSafeArea
+check noRideWithoutReservation
 
 run show for 4
