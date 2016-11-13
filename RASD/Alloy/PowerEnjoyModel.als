@@ -15,6 +15,9 @@ sig Date{
 sig Position {
 	positionId: one Int
 }
+{
+	positionId > 0
+}
 
 abstract sig User {}
 
@@ -282,7 +285,8 @@ pred show() {
 	#{c1: Car |c1.batteryInCharge = False} >=1
 	#{c1: Car |c1.position = NoSafeArea} >=1
 	#Ride = 1
-	#User >=2
+	#User =2
+	#Reservation = 2
 }
 
 //check rideCondition
