@@ -1,4 +1,4 @@
-/*******************************************************************************
+/** *****************************************************************************
  * Licensed to the Apache Software Foundation (ASF) under one
  * or more contributor license agreements.  See the NOTICE file
  * distributed with this work for additional information
@@ -15,7 +15,7 @@
  * KIND, either express or implied.  See the License for the
  * specific language governing permissions and limitations
  * under the License.
- *******************************************************************************/
+ ****************************************************************************** */
 package org.apache.ofbiz.product.feature;
 
 import java.util.HashMap;
@@ -46,7 +46,6 @@ import org.apache.ofbiz.service.ServiceUtil;
 /**
  * Services for product features
  */
-
 public class ProductFeatureServices {
 
     public static final String module = ProductFeatureServices.class.getName();
@@ -94,12 +93,13 @@ public class ProductFeatureServices {
             // get all product features in this feature category
             List<GenericValue> allFeatures = EntityQuery.use(delegator).from(entityToSearch).where(fieldToSearch, valueToSearch).orderBy(orderBy).queryList();
 
-            if (entityToSearch.equals("ProductFeatureAndAppl") && productFeatureApplTypeId != null)
+            if (entityToSearch.equals("ProductFeatureAndAppl") && productFeatureApplTypeId != null) {
                 allFeatures = EntityUtil.filterByAnd(allFeatures, UtilMisc.toMap("productFeatureApplTypeId", productFeatureApplTypeId));
+            }
 
             List<String> featureTypes = new LinkedList<String>();
             Map<String, List<GenericValue>> featuresByType = new LinkedHashMap<String, List<GenericValue>>();
-            for (GenericValue feature: allFeatures) {
+            for (GenericValue feature : allFeatures) {
                 String featureType = feature.getString("productFeatureTypeId");
                 if (!featureTypes.contains(featureType)) {
                     featureTypes.add(featureType);
@@ -141,11 +141,11 @@ public class ProductFeatureServices {
              * it qualifies and add it to the list of existingVariantProductIds.
              */
             List<GenericValue> productAssocs = EntityQuery.use(delegator).from("ProductAssoc").where("productId", productId, "productAssocTypeId", "PRODUCT_VARIANT").filterByDate().queryList();
-            for (GenericValue productAssoc: productAssocs) {
+            for (GenericValue productAssoc : productAssocs) {
 
                 //for each associated product, if it has all standard features, display it's productId
                 boolean hasAllFeatures = true;
-                for (String productFeatureAndAppl: curProductFeatureAndAppls) {
+                for (String productFeatureAndAppl : curProductFeatureAndAppls) {
                     Map<String, String> findByMap = UtilMisc.toMap("productId", productAssoc.getString("productIdTo"),
                             "productFeatureId", productFeatureAndAppl,
                             "productFeatureApplTypeId", "STANDARD_FEATURE");
@@ -170,7 +170,7 @@ public class ProductFeatureServices {
             Debug.logError(ex, ex.getMessage(), module);
             return ServiceUtil.returnError(ex.getMessage());
         }
-    return results;
+        return results;
     }
 
     /*
@@ -196,28 +196,28 @@ public class ProductFeatureServices {
 
             // need to keep 2 lists, oldCombinations and newCombinations, and keep swapping them after each looping.  Otherwise, you'll get a
             // concurrent modification exception
-            List<Map<String, Object>> oldCombinations = new LinkedList<Map<String,Object>>();
+            List<Map<String, Object>> oldCombinations = new LinkedList<Map<String, Object>>();
 
             // loop through each feature type
-            for (Map.Entry<String, List<GenericValue>> entry: features.entrySet()) {
+            for (Map.Entry<String, List<GenericValue>> entry : features.entrySet()) {
                 List<GenericValue> currentFeatures = entry.getValue();
 
-                List<Map<String, Object>> newCombinations = new LinkedList<Map<String,Object>>();
+                List<Map<String, Object>> newCombinations = new LinkedList<Map<String, Object>>();
                 List<Map<String, Object>> combinations;
 
                 // start with either existing combinations or from scratch
                 if (oldCombinations.size() > 0) {
                     combinations = oldCombinations;
                 } else {
-                    combinations = new LinkedList<Map<String,Object>>();
+                    combinations = new LinkedList<Map<String, Object>>();
                 }
 
                 // in both cases, use each feature of current feature type's idCode and
                 // product feature and add it to the id code and product feature applications
                 // of the next variant.  just a matter of whether we're starting with an
                 // existing list of features and id code or from scratch.
-                if (combinations.size()==0) {
-                    for (GenericValue currentFeature: currentFeatures) {
+                if (combinations.size() == 0) {
+                    for (GenericValue currentFeature : currentFeatures) {
                         if (currentFeature.getString("productFeatureApplTypeId").equals("SELECTABLE_FEATURE")) {
                             Map<String, Object> newCombination = new HashMap<String, Object>();
                             List<GenericValue> newFeatures = new LinkedList<GenericValue>();
@@ -235,8 +235,8 @@ public class ProductFeatureServices {
                         }
                     }
                 } else {
-                    for (Map<String, Object> combination: combinations) {
-                        for (GenericValue currentFeature: currentFeatures) {
+                    for (Map<String, Object> combination : combinations) {
+                        for (GenericValue currentFeature : currentFeatures) {
                             if (currentFeature.getString("productFeatureApplTypeId").equals("SELECTABLE_FEATURE")) {
                                 Map<String, Object> newCombination = new HashMap<String, Object>();
                                 // .clone() is important, or you'll keep adding to the same List for all the variants
@@ -267,15 +267,15 @@ public class ProductFeatureServices {
             defaultVariantProductIds.add(productId);
 
             // now figure out which of these combinations already have productIds associated with them
-            for (Map<String, Object> combination: oldCombinations) {
+            for (Map<String, Object> combination : oldCombinations) {
                 // Verify if the default code is already used, if so add a numeric suffix
                 if (defaultVariantProductIds.contains(combination.get("defaultVariantProductId"))) {
-                    combination.put("defaultVariantProductId", combination.get("defaultVariantProductId") + "-" + (defaultCodeCounter < 10? "0" + defaultCodeCounter: "" + defaultCodeCounter));
+                    combination.put("defaultVariantProductId", combination.get("defaultVariantProductId") + "-" + (defaultCodeCounter < 10 ? "0" + defaultCodeCounter : "" + defaultCodeCounter));
                     defaultCodeCounter++;
                 }
                 defaultVariantProductIds.add((String) combination.get("defaultVariantProductId"));
                 results = dispatcher.runSync("getAllExistingVariants", UtilMisc.toMap("productId", productId,
-                                             "productFeatureAppls", combination.get("curProductFeatureIds")));
+                        "productFeatureAppls", combination.get("curProductFeatureIds")));
                 combination.put("existingVariantProductIds", results.get("variantProductIds"));
             }
             results = ServiceUtil.returnSuccess();
@@ -313,12 +313,12 @@ public class ProductFeatureServices {
         if ((memberProducts != null) && (memberProducts.size() > 0)) {
             // construct a Map of productFeatureTypeId -> productFeatureId from the productFeatures List
             Map<String, String> featuresByType = new HashMap<String, String>();
-            for (GenericValue nextFeature: productFeatures) {
+            for (GenericValue nextFeature : productFeatures) {
                 featuresByType.put(nextFeature.getString("productFeatureTypeId"), nextFeature.getString("productFeatureId"));
             }
 
             List<GenericValue> products = new LinkedList<GenericValue>(); // final list of variant products
-            for (GenericValue memberProduct: memberProducts) {
+            for (GenericValue memberProduct : memberProducts) {
                 // find variants for each member product of the category
 
                 try {
