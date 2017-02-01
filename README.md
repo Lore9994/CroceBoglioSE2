@@ -13,3 +13,4 @@ This is the project for the Software Engineering 2 course (2016/2017) of Compute
 1. **Integration Test Plan Document**: [here](https://github.com/Lore9994/CroceBoglioSE2/tree/master/deliveries/ITPD).
 1. **Project Plan**: [here](https://github.com/Lore9994/CroceBoglioSE2/tree/master/deliveries/PP).
 1. **Code Inspection**: [here](https://github.com/Lore9994/CroceBoglioSE2/tree/master/deliveries/CodeInspection).
+1. **Presentation**: [here](https://github.com/Lore9994/CroceBoglioSE2/tree/master/presentation).
